@@ -124,6 +124,20 @@ header h1 {
 .card-content { padding: 12px; }
 .card h3 { margin: 0; font-size: 1rem; color: #222; }
 .card p { margin-top: 6px; font-size: 0.9rem; color: #333; }
+.artista {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.comentario {
+  font-size: 0.8rem;      /* menor */
+  font-style: italic;     /* itálico */
+  color: #555;            /* tom mais suave */
+  margin-top: 10px;       /* mais espaçamento do artista */
+  line-height: 1.4;       /* leitura agradável */
+  opacity: 0.85;          /* leve transparência */
+}
+
 
 /* MODAL */
 .modal {
@@ -206,3 +220,4 @@ header h1 {
   .controls { padding: 0 12px 12px; }
   #Spotify { width: 100%; }
 }
+
