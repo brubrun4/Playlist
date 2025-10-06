@@ -66,11 +66,13 @@ function renderLista(lista) {
     card.className = "card";
     const imgSrc = musica.capa || "data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><rect width='100%' height='100%' fill='%23f5f5f5'/><text x='50%' y='50%' font-size='24' fill='%23ccc' text-anchor='middle' dominant-baseline='middle'>Capa ausente</text></svg>";
     card.innerHTML = `
-      <img loading="lazy" src="${imgSrc}" alt="${escapeHtml(musica.titulo)}" />
-      <div class="card-content">
-        <h3>${escapeHtml(capitalize(musica.titulo))}</h3>
-        <p>${escapeHtml(musica.artista)}</p>
-      </div>
+  <img loading="lazy" src="${imgSrc}" alt="${escapeHtml(musica.titulo)}" />
+  <div class="card-content">
+    <h3>${escapeHtml(capitalize(musica.titulo))}</h3>
+    <p class="artista">${escapeHtml(musica.artista)}</p>
+    <p class="comentario">${escapeHtml(musica.comentario || "")}</p>
+  </div>
+`;
     `;
     card.addEventListener("click", () => openModal(musica));
     playlist.appendChild(card);
@@ -164,4 +166,5 @@ document.getElementById("anteriorBtn").addEventListener("click", () => {
     openModal(musicas[musicaAtual]);
   }
 });
+
 
