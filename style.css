@@ -18,6 +18,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
+  overflow-y: auto;
 }
 
 body::before {
@@ -32,7 +33,7 @@ body::before {
     radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(200, 50, 80, 0.04) 0%, transparent 50%);
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
   animation: floatBackground 15s ease-in-out infinite;
 }
 
@@ -98,7 +99,7 @@ body::before {
 }
 
 .intro-content p {
-  font-size: clamp(1rem, 2.8vw, 1.7rem);
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
   margin-bottom: 30px;
   line-height: 1.6;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
@@ -220,6 +221,11 @@ header h1 {
   background: rgba(255, 255, 255, 1);
 }
 
+.controls small {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+}
 
 /* PLAYLIST GRID */
 #playlist {
@@ -647,13 +653,17 @@ header h1 {
   display: none;
 }
 
+.footer.hidden {
+  display: none;
+}
+
 .footer-content {
   max-width: 600px;
   margin: 0 auto;
 }
 
 .footer-message {
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 10px;
   font-family: 'Cormorant Garamond', serif;
@@ -678,10 +688,10 @@ header h1 {
 }
 
 .footer-author {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   font-style: italic;
-  font-family: 'Cormorant Garamond', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* LOADING STATE */
