@@ -1,62 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Aniversário, meu amor!</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Great+Vibes&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Uma playlist especial de amor com 31 músicas">
+  <meta name="theme-color" content="#a82640">
+  <title>Feliz aniversário, meu amor!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <!-- Tela de introdução -->
   <div id="intro" class="intro">
     <div class="intro-content">
-      <h1>Tudo pra você</h1>
-      <p>Você sabe que sou péssima pra me expressar, então acabo procurando meios de demonstrar o quanto você me inspira. <br>
-      Obrigada por ser quem é e parabéns pelo seu dia, espero passar muitos mais ao seu lado celebrando sua existência. <br>
-      Espero que goste da lembrancinha hahah, te amo.</p>
-      <button id="startBtn">Entrar</button>
+      <p>Você sabe que sou péssima pra me expressar, então acabo procurando meios de demonstrar o quanto você me inspira. <br> Espero que goste da lembrancinha.</p>
+      
+      <button id="startBtn" aria-label="Entrar na página">Entrar</button>
     </div>
   </div>
 
-  <!-- App -->
-  <div id="app" style="display:none;">
+  <!-- App principal -->
+  <div id="app">
     <header>
       <h1>31 trechos de músicas pra expressar o quanto te amo</h1>
     </header>
 
     <div class="controls">
-      <input id="search" type="search" placeholder="Buscar por título ou artista..." />
-      <small>Digite para filtrar</small>
-      <a href="https://open.spotify.com/playlist/2iOVl21Sfo5NA0F1w7w9IZ?si=a0cb9e1784f54832" target="_blank">
-        <button id="Spotify">Adicionar no Spotify</button>
-      </a>
+      <div class="search-wrapper">
+        <input 
+          id="search" 
+          type="search" 
+          placeholder="Buscar por título ou artista..." 
+          aria-label="Buscar músicas"
+        >
+      </div>
     </div>
 
-    <main id="playlist"></main>
+    <main id="playlist" role="list" aria-label="Lista de músicas"></main>
+
+    <div class="final-message-container">
+      <button id="finalMessageBtn" class="final-message-btn">Ver mensagem final</button>
+    </div>
+
+    <!-- Rodapé dentro do app -->
+    <footer class="footer" id="footer">
+      <div class="footer-content">
+        <p class="footer-message">Feito com todo o meu coração <span class="heart">❤️</span></p>
+        <p class="footer-author">Bruna Rodrigues da Cruz</p>
+      </div>
+    </footer>
   </div>
 
   <!-- Modal -->
-  <div id="modal" class="modal" aria-hidden="true">
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
     <div class="modal-content">
-      <button id="close" class="close" aria-label="Fechar">&times;</button>
-
+      <button id="close" class="close" aria-label="Fechar modal">&times;</button>
+      
       <div class="modal-navegacao">
-        <button id="anteriorBtn">⟨ Anterior</button>
-        <button id="proximaBtn">Próxima ⟩</button>
+        <button id="anteriorBtn" aria-label="Música anterior">⟨ Anterior</button>
+        <button id="proximaBtn" aria-label="Próxima música">Próxima ⟩</button>
       </div>
 
-      <img id="modal-capa" src="" alt="Capa da música" />
+      <img id="modal-capa" src="" alt="Capa da música">
       <h2 id="modal-titulo"></h2>
       <p id="modal-artista"></p>
       <p id="modal-comentario"></p>
-
+      
       <iframe 
         id="spotify-embed"
+        title="Player do Spotify"
         frameborder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
       </iframe>
+    </div>
+  </div>
+
+<!-- Página Final -->
+  <div id="finalPage" class="final-page" style="display:none;">
+    <div class="final-content">
+      <h2>Obrigada por ser você</h2>
+      <p class="final-message">Conseguiria colocar mais 100 músicas facilmente, até porque tudo me faz pensar em ti.</p>
+      <p class="final-message">Você é meu conforto e eu sou muito privilegiada de ter você pra mim. Espero comemorar muitos mais aniversários contigo e prometo celebrar sua existência e te fazer feliz até o dia da minha morte (se bobear, ainda depois de morta fico igual um obsessor atrás de você hahaha).</p>
+      <p class="final-closing">Sou maluca por você.</p>
+      <div class="final-buttons">
+        <a href="https://open.spotify.com/playlist/2iOVl21Sfo5NA0F1w7w9IZ?si=a0cb9e1784f54832" target="_blank" rel="noopener noreferrer" class="final-spotify-btn">Adicionar no Spotify</a>
+        <button id="restartBtn" class="restart-btn">Começar novamente</button>
+      </div>
     </div>
   </div>
 
