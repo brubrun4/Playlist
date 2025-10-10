@@ -142,9 +142,6 @@ body::before {
 #app {
   animation: fadeInApp 0.8s ease;
   display: block;
-  position: relative;
-  z-index: 50;
-  background: linear-gradient(135deg, #1a0f12 0%, #2d1820 50%, #1a0f12 100%);
 }
 
 #app.hidden {
@@ -526,16 +523,15 @@ header h1 {
 /* PÁGINA FINAL */
 .final-page {
   display: none;
-  position: fixed;
-  inset: 0;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px 200px 20px;
   text-align: center;
   animation: fadeInApp 0.8s ease;
+  margin-bottom: 100px;
+  position: relative;
   z-index: 100;
-  background: linear-gradient(135deg, #1a0f12 0%, #2d1820 50%, #1a0f12 100%);
-  overflow: hidden;
-  padding: 40px 20px;
 }
 
 .final-content {
@@ -546,8 +542,6 @@ header h1 {
   border-radius: 20px;
   padding: 60px 40px;
   animation: slideInUp 0.8s ease;
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
 .final-content h2 {
@@ -808,3 +802,73 @@ header h1 {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(168, 38, 64, 0.8);
 }
+/* CORREÇÃO PARA SAFARI / WEBKIT */
+html, body {
+  color-scheme: light dark;
+  -webkit-color-adjust: exact;
+  color-adjust: exact;
+}
+
+/* Safari tende a clarear gradientes e fundos com transparência — 
+   esse bloco força os valores originais */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background: linear-gradient(135deg, #1a0f12 0%, #2d1820 50%, #1a0f12 100%) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .final-content,
+  .footer {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(168, 38, 64, 0.3) !important;
+  }
+  
+  .final-message-btn,
+  .restart-btn {
+    background: rgba(168, 38, 64, 0.25) !important;
+    color: #ffb6d9 !important;
+  }
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    height: 100vh; /* força o uso da altura total */
+  }
+
+  @media (display-mode: standalone) {
+    body {
+      min-height: 100vh;
+    }
+  }
+}
+input, textarea, select {
+  font-size: 16px !important;
+}
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    height: -webkit-fill-available; 
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    background-color: #1a0f12;
+    background-image: linear-gradient(135deg, #1a0f12 0%, #2d1820 50%, #1a0f12 100%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+
+
+
+
+
