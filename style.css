@@ -802,3 +802,33 @@ header h1 {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(168, 38, 64, 0.8);
 }
+/* CORREÇÃO PARA SAFARI / WEBKIT */
+html, body {
+  color-scheme: light dark;
+  -webkit-color-adjust: exact;
+  color-adjust: exact;
+}
+
+/* Safari tende a clarear gradientes e fundos com transparência — 
+   esse bloco força os valores originais */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background: linear-gradient(135deg, #1a0f12 0%, #2d1820 50%, #1a0f12 100%) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .final-content,
+  .footer {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(168, 38, 64, 0.3) !important;
+  }
+
+  /* Safari às vezes interpreta RGBA de forma mais clara */
+  .final-message-btn,
+  .restart-btn {
+    background: rgba(168, 38, 64, 0.25) !important;
+    color: #ffb6d9 !important;
+  }
+}
+
