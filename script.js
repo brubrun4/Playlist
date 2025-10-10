@@ -248,6 +248,7 @@ proximaBtn.addEventListener("click", () => {
       app.style.display = "none";
       finalPage.style.display = "flex";
       footer.style.display = "none";
+      document.body.style.overflow = "hidden"; // ← ADICIONE ESTA LINHA
       window.scrollTo(0, 0);
     }, 300);
   }
@@ -259,6 +260,7 @@ finalMessageBtn.addEventListener("click", () => {
   finalMessageContainer.style.display = "none";
   footer.style.display = "none";
   finalPage.style.display = "flex";
+  document.body.style.overflow = "hidden";
   window.scrollTo(0, 0);
 });
 
@@ -268,6 +270,7 @@ restartBtn.addEventListener("click", () => {
   app.style.display = "block";
   finalMessageContainer.style.display = "block";
   footer.style.display = "block";
+  document.body.style.overflow = "";
   musicaAtualIndex = 0;
   renderPlaylist(musicas);
   window.scrollTo(0, 0);
@@ -345,3 +348,4 @@ musicas.forEach(musica => {
     });
   }
 });
+
