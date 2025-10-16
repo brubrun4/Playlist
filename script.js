@@ -216,8 +216,8 @@ startBtn.addEventListener("click", () => {
   intro.style.opacity = "0";
   setTimeout(() => {
     intro.style.display = "none";
+    app.classList.add("visible");
     app.classList.remove("hidden");
-    footer.classList.remove("hidden");
   }, 500);
 });
 
@@ -245,10 +245,8 @@ proximaBtn.addEventListener("click", () => {
   } else if (musicaAtualIndex === musicas.length - 1) {
     closeModal();
     setTimeout(() => {
-      app.style.display = "none";
+      app.classList.add("hidden");
       finalPage.style.display = "flex";
-      footer.style.display = "none";
-      document.body.style.overflow = "hidden"; // ← ADICIONE ESTA LINHA
       window.scrollTo(0, 0);
     }, 300);
   }
@@ -256,21 +254,16 @@ proximaBtn.addEventListener("click", () => {
 
 // Botão "Ver mensagem final"
 finalMessageBtn.addEventListener("click", () => {
-  app.style.display = "none";
-  finalMessageContainer.style.display = "none";
-  footer.style.display = "none";
+  app.classList.add("hidden");
   finalPage.style.display = "flex";
-  document.body.style.overflow = "hidden";
   window.scrollTo(0, 0);
 });
 
 // Botão "Começar novamente"
 restartBtn.addEventListener("click", () => {
   finalPage.style.display = "none";
-  app.style.display = "block";
-  finalMessageContainer.style.display = "block";
-  footer.style.display = "block";
-  document.body.style.overflow = "";
+  app.classList.add("visible");
+  app.classList.remove("hidden");
   musicaAtualIndex = 0;
   renderPlaylist(musicas);
   window.scrollTo(0, 0);
@@ -348,4 +341,3 @@ musicas.forEach(musica => {
     });
   }
 });
-
